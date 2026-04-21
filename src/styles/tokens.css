@@ -1,0 +1,17 @@
+:root {
+  --wip-bg: #0a0a0a;
+  --wip-surface: #141414;
+  --wip-border: #2a2a2a;
+  --wip-volt: #dfff4f;
+  --wip-muted: #6b6b6b;
+  --wip-text: #ffffff;
+}
+
+html[data-theme="light"] {
+  --wip-bg: #f3f4f1;
+  --wip-surface: #ffffff;
+  --wip-border: #d6d9d1;
+  --wip-volt: #b8d800;
+  --wip-muted: #6c7366;
+  --wip-text: #121410;
+}

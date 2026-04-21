@@ -1,0 +1,374 @@
+@import "../styles/tokens.css";
+@import "../styles/motion.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-run-bg text-white antialiased;
+}
+
+html[data-theme="light"] body {
+  background-color: var(--wip-bg);
+  color: var(--wip-text);
+}
+
+/* Leaflet z-index below our HUD */
+.leaflet-container {
+  font-family: var(--font-geist), system-ui, sans-serif;
+}
+
+.leaflet-control-attribution {
+  @apply bg-black/50 text-[10px] text-run-muted;
+}
+
+.leaflet-control-attribution a {
+  @apply text-run-muted underline;
+}
+
+html[data-theme="light"] .leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+/* 라이트 모드 공통 오버라이드 (현재 UI 스코프) */
+html[data-theme="light"] .bg-run-bg {
+  background-color: var(--wip-bg) !important;
+}
+
+html[data-theme="light"] [class*="bg-run-surface"] {
+  background-color: rgba(255, 255, 255, 0.86) !important;
+}
+
+html[data-theme="light"] .border-run-border,
+html[data-theme="light"] [class*="border-run-border"] {
+  border-color: var(--wip-border) !important;
+}
+
+html[data-theme="light"] .text-run-muted {
+  color: var(--wip-muted) !important;
+}
+
+html[data-theme="light"] .text-white,
+html[data-theme="light"] [class*="text-white/"] {
+  color: rgba(18, 20, 16, 0.9) !important;
+}
+
+html[data-theme="light"] .bg-black,
+html[data-theme="light"] [class*="bg-black/"] {
+  background-color: rgba(255, 255, 255, 0.86) !important;
+}
+
+html[data-theme="light"] [class*="border-white/"] {
+  border-color: rgba(18, 20, 16, 0.16) !important;
+}
+
+html[data-theme="light"] .wip-mega {
+  color: #11140f;
+}
+
+html[data-theme="light"] .wip-scramble-dud {
+  color: #9aa196;
+}
+
+html[data-theme="light"] .wip-lead {
+  color: rgba(18, 20, 16, 0.62);
+}
+
+html[data-theme="light"] .wip-eyebrow {
+  color: #94b300;
+}
+
+.wip-theme-toggle {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.55);
+  color: rgba(255, 255, 255, 0.82);
+  padding: 0.45rem 0.9rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.wip-theme-toggle:hover {
+  border-color: rgba(223, 255, 79, 0.8);
+  color: #fff;
+}
+
+html[data-theme="light"] .wip-theme-toggle {
+  border-color: rgba(18, 20, 16, 0.24);
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(18, 20, 16, 0.75);
+}
+
+/* 공용 헤더 (public) */
+.wip-public-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.wip-public-header-inner {
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  max-width: 80rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.wip-public-logo {
+  font-family: var(--font-oswald), system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.wip-public-link {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.2s ease;
+}
+
+.wip-public-link:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+html[data-theme="light"] .wip-public-header {
+  border-bottom-color: rgba(18, 20, 16, 0.12);
+  background: rgba(250, 250, 248, 0.9);
+}
+
+html[data-theme="light"] .wip-public-logo {
+  color: rgba(18, 20, 16, 0.88);
+}
+
+html[data-theme="light"] .wip-public-link {
+  color: rgba(18, 20, 16, 0.48);
+}
+
+html[data-theme="light"] .wip-public-link:hover {
+  color: rgba(18, 20, 16, 0.92);
+}
+
+/* 메인 지도 전용: 온도계형 줌 컨트롤 (좌측 중앙) */
+.home-map-zoom-rail {
+  position: fixed;
+  left: 1.25rem;
+  top: 50%;
+  z-index: 18;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.home-map-zoom-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 10, 10, 0.62);
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 300;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.16s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.home-map-zoom-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(223, 255, 79, 0.92);
+  border-color: rgba(223, 255, 79, 0.95);
+  color: #111;
+}
+
+.home-map-zoom-btn:active {
+  transform: scale(0.97);
+}
+
+.home-map-zoom-track {
+  position: relative;
+  width: 54px;
+  height: 170px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(10, 10, 10, 0.62);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.home-map-zoom-track:focus-visible {
+  outline: 2px solid rgba(223, 255, 79, 0.9);
+  outline-offset: 2px;
+}
+
+.home-map-zoom-line {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.home-map-zoom-thumb {
+  position: absolute;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(223, 255, 79, 0.95);
+  background: rgba(223, 255, 79, 0.95);
+  box-shadow: 0 0 0 4px rgba(223, 255, 79, 0.18);
+}
+
+/* ── 랜딩: PORTFOLIO/style.css 톤을 참고한 스크롤 리빌 · 대형 타이틀 ── */
+[data-wip-reveal] {
+  opacity: 0;
+  transform: translateY(36px);
+  filter: blur(10px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-wip-reveal][data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+[data-wip-reveal][data-wip-delay="1"] {
+  transition-delay: 0.1s;
+}
+
+[data-wip-reveal][data-wip-delay="2"] {
+  transition-delay: 0.18s;
+}
+
+[data-wip-reveal][data-wip-delay="3"] {
+  transition-delay: 0.26s;
+}
+
+[data-wip-reveal][data-wip-delay="4"] {
+  transition-delay: 0.34s;
+}
+
+[data-wip-reveal][data-wip-delay="5"] {
+  transition-delay: 0.42s;
+}
+
+[data-wip-reveal][data-wip-delay="6"] {
+  transition-delay: 0.5s;
+}
+
+.wip-section {
+  padding: clamp(3rem, 8vw, 5rem) 0;
+}
+
+.wip-section-inner {
+  margin: 0 auto;
+  max-width: 84rem;
+  padding-left: clamp(1rem, 2.2vw, 1.75rem);
+  padding-right: clamp(1rem, 2.2vw, 1.75rem);
+}
+
+.wip-eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #ff6b3d;
+}
+
+.wip-headline-wrap {
+  overflow: hidden;
+  padding-bottom: 0.25rem;
+}
+
+.wip-mega {
+  margin: 0 0 1rem;
+  font-family: var(--font-oswald), system-ui, sans-serif;
+  font-size: clamp(2.75rem, 12vw, 7rem);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: #fafafa;
+}
+
+/* PORTFOLIO .section-headline--scramble .dud */
+.wip-scramble-dud {
+  color: #555;
+  opacity: 0.75;
+}
+
+.wip-lead {
+  max-width: 40rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+@keyframes wip-scroll-drop {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  45% {
+    transform: translateY(0);
+  }
+
+  55% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.wip-scroll-bar {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
+  animation: wip-scroll-drop 1.9s ease-in-out infinite;
+}
