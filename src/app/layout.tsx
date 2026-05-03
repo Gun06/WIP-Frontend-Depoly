@@ -26,12 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${oswald.variable} ${dmSans.variable}`}>
+    <html lang="ko" data-theme="light" className={`${oswald.variable} ${dmSans.variable}`}>
       <body className="font-body min-h-dvh bg-run-bg">
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var m=localStorage.getItem('wip-theme');if(m==='light'){document.documentElement.dataset.theme='light';}else{document.documentElement.dataset.theme='dark';}}catch(e){document.documentElement.dataset.theme='dark';}})();",
+              "(function(){try{var m=localStorage.getItem('wip-theme');if(m==='dark'){document.documentElement.dataset.theme='dark';}else{document.documentElement.dataset.theme='light';}}catch(e){document.documentElement.dataset.theme='light';}})();",
           }}
         />
         {children}

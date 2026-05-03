@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cn } from "@/shared/lib/utils/cn";
+import { ScrollProgressBar } from "@/shared/components/ScrollProgressBar";
 
 const items = [
   { href: "/competitions", label: "대회" },
@@ -26,7 +27,7 @@ export function LandingFloatingNav() {
   return (
     <header
       className={cn(
-        "pointer-events-auto fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-4 transition-colors duration-500 md:px-10 md:py-5",
+        "pointer-events-auto fixed inset-x-0 top-0 z-40 flex items-center justify-between overflow-visible px-5 py-4 transition-colors duration-500 md:px-10 md:py-5",
         scrolled
           ? "border-b border-white/[0.08] bg-black/55 backdrop-blur-xl"
           : "border-b border-transparent bg-gradient-to-b from-black/50 to-transparent",
@@ -61,6 +62,7 @@ export function LandingFloatingNav() {
           </span>
         ))}
       </nav>
+      <ScrollProgressBar />
     </header>
   );
 }

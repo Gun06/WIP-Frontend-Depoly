@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { DemoSession } from "@/shared/lib/auth/constants";
+import { ScrollProgressBar } from "./ScrollProgressBar";
 
 const link = "wip-public-link";
 
@@ -10,9 +11,9 @@ export function PublicNav({ session }: { session: DemoSession }) {
     <header className="wip-public-header">
       <div className="wip-public-header-inner">
         <Link href="/" className="wip-public-logo">
-          WIP
+          WIP RUN
         </Link>
-        <nav className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2">
+        <nav className="flex flex-wrap items-center justify-end gap-x-7 gap-y-2">
           <Link className={link} href="/competitions">
             대회
           </Link>
@@ -35,6 +36,7 @@ export function PublicNav({ session }: { session: DemoSession }) {
           </Link>
         </nav>
       </div>
+      <ScrollProgressBar />
     </header>
   );
 }

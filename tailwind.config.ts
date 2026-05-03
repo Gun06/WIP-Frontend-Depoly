@@ -14,8 +14,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-oswald)", "system-ui", "sans-serif"],
-        body: ["var(--font-geist)", "system-ui", "sans-serif"],
+        display: ["var(--font-oswald)", "'Pretendard Variable'", "Pretendard", "system-ui", "sans-serif"],
+        body: ["'Pretendard Variable'", "Pretendard", "var(--font-geist)", "system-ui", "sans-serif"],
       },
     },
   },

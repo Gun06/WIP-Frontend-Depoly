@@ -10,11 +10,11 @@ function setTheme(mode: ThemeMode) {
 }
 
 export function ThemeToggle() {
-  const [mode, setMode] = useState<ThemeMode>("dark");
+  const [mode, setMode] = useState<ThemeMode>("light");
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    const next: ThemeMode = saved === "light" ? "light" : "dark";
+    const next: ThemeMode = saved === "dark" ? "dark" : "light";
     setMode(next);
     setTheme(next);
   }, []);
