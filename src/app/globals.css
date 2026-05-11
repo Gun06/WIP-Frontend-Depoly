@@ -419,6 +419,85 @@ html[data-theme="light"] .wip-theme-toggle {
   color: rgba(18, 20, 16, 0.75);
 }
 
+/* ── 라이트 모드: 랭킹 뱃지 ── */
+
+/* Sub3 (volt) — 형광 노랑 배경 유지, 텍스트는 진한 volt */
+html[data-theme="light"] span.rank-badge[class*="text-run-volt"] {
+  color: #3d5500 !important;
+}
+html[data-theme="light"] span.rank-badge[class*="bg-run-volt"] {
+  background-color: rgba(223, 255, 79, 0.28) !important;
+}
+html[data-theme="light"] span.rank-badge[class*="border-run-volt"] {
+  border-color: rgba(150, 190, 0, 0.6) !important;
+}
+
+/* 인증 (blue) — 진한 blue-600 */
+html[data-theme="light"] span.rank-badge[class*="text-blue-400"] {
+  color: #2563eb !important;
+}
+html[data-theme="light"] span.rank-badge[class*="bg-blue-500"] {
+  background-color: rgba(59, 130, 246, 0.18) !important;
+}
+html[data-theme="light"] span.rank-badge[class*="border-blue-500"] {
+  border-color: rgba(37, 99, 235, 0.45) !important;
+}
+
+/* 풀완주 (emerald) — 진한 emerald-700 */
+html[data-theme="light"] span.rank-badge[class*="text-emerald-400"] {
+  color: #047857 !important;
+}
+html[data-theme="light"] span.rank-badge[class*="bg-emerald-500"] {
+  background-color: rgba(16, 185, 129, 0.18) !important;
+}
+html[data-theme="light"] span.rank-badge[class*="border-emerald-500"] {
+  border-color: rgba(4, 120, 87, 0.45) !important;
+}
+
+/* 10K 40분 (purple) */
+html[data-theme="light"] span.rank-badge[class*="text-purple-400"] {
+  color: #7c3aed !important;
+}
+html[data-theme="light"] span.rank-badge[class*="bg-purple-500"] {
+  background-color: rgba(139, 92, 246, 0.18) !important;
+}
+html[data-theme="light"] span.rank-badge[class*="border-purple-500"] {
+  border-color: rgba(124, 58, 237, 0.45) !important;
+}
+
+/* 기본 뱃지 (+N 포함) */
+html[data-theme="light"] span.rank-badge[class*="bg-white/"] {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+html[data-theme="light"] span.rank-badge[class*="text-white/"] {
+  color: rgba(18, 20, 16, 0.55) !important;
+}
+
+/* ── 라이트 모드: 내 순위 바 ── */
+html[data-theme="light"] .my-rank-bar {
+  background-color: rgba(223, 255, 79, 0.22) !important;
+  border-color: rgba(180, 215, 0, 0.6) !important;
+}
+html[data-theme="light"] .my-rank-volt {
+  color: #4e7000 !important;
+}
+
+/* ── 라이트 모드: 내 순위 row 하이라이트 ── */
+html[data-theme="light"] [class*="bg-blue-500/10"] {
+  background-color: rgba(59, 130, 246, 0.18) !important;
+}
+html[data-theme="light"] [class*="border-blue-500/40"] {
+  border-color: rgba(59, 130, 246, 0.75) !important;
+}
+
+/* ── 라이트 모드: 랭킹 공통 ── */
+
+/* 아바타 / 스켈레톤 / 구분선 배경 (bg-run-border) */
+html[data-theme="light"] [class*="bg-run-border"] {
+  background-color: var(--wip-border) !important;
+}
+
+
 /* 공용 헤더 (public) */
 .wip-public-header {
   position: sticky;
