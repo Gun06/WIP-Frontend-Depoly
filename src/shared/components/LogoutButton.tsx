@@ -6,11 +6,18 @@ import { AUTH_API_PATHS } from "@/shared/constants/auth";
 import { ROUTES } from "@/shared/constants/routes";
 import { Button } from "@/shared/components/ui/Button";
 
-type Props = { redirectTo?: string; label?: string };
+type Props = {
+  redirectTo?: string;
+  label?: string;
+  className?: string;
+  variant?: "primary" | "ghost" | "outline";
+};
 
 export function LogoutButton({
   redirectTo = ROUTES.home,
   label = "로그아웃",
+  className,
+  variant = "ghost",
 }: Props) {
   const router = useRouter();
   const [pending, setPending] = useState(false);
@@ -24,7 +31,7 @@ export function LogoutButton({
   }
 
   return (
-    <Button type="button" variant="ghost" onClick={logout} disabled={pending}>
+    <Button type="button" variant={variant} className={className} onClick={logout} disabled={pending}>
       {pending ? "로그아웃 중…" : label}
     </Button>
   );

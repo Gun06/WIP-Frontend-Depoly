@@ -1,25 +1,39 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type ThemeMode = "dark" | "light";
 const STORAGE_KEY = "wip-theme";
 
 function setTheme(mode: ThemeMode) {
-  document.documentElement.dataset.theme = mode;
+  const root = document.documentElement;
+  root.classList.add("no-transition");
+  root.dataset.theme = mode;
+  // reflow 강제 후 다음 프레임에 transition 복원
+  void root.getBoundingClientRect();
+  requestAnimationFrame(() => {
+    root.classList.remove("no-transition");
+  });
 }
 
 export function ThemeToggle() {
+  const pathname = usePathname();
   const [mode, setMode] = useState<ThemeMode>("light");
 
   useEffect(() => {
+    if (pathname?.startsWith("/admin")) return;
     const saved = localStorage.getItem(STORAGE_KEY);
     const next: ThemeMode = saved === "dark" ? "dark" : "light";
     setMode(next);
     setTheme(next);
-  }, []);
+  }, [pathname]);
 
   const isLight = mode === "light";
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <button

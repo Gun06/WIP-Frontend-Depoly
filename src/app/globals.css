@@ -19,6 +19,13 @@ body {
   height: 100%;
 }
 
+/* 테마 전환 순간 모든 transition 비활성화 → 요소별 색상 타이밍 차이(깜빡임) 방지 */
+.no-transition *,
+.no-transition *::before,
+.no-transition *::after {
+  transition: none !important;
+}
+
 body {
   @apply bg-run-bg text-white antialiased;
 }
@@ -754,4 +761,1107 @@ html[data-theme="light"] .wip-public-link:hover {
   inset: 0;
   background: rgba(255, 255, 255, 0.55);
   animation: wip-scroll-drop 1.9s ease-in-out infinite;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   관리자 셸 디자인 시스템 (wip-admin-shell)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* 페이지 타이틀: font-weight 600 */
+.wip-admin-shell h1.font-display {
+  font-weight: 600 !important;
+}
+
+/* primary / volt → #1e6fbf (형광 초록 제거) */
+.wip-admin-shell .text-run-volt {
+  color: #1e6fbf !important;
+}
+
+.wip-admin-shell [class*="hover:text-run-volt"]:hover {
+  color: #1e6fbf !important;
+}
+
+.wip-admin-shell .border-run-volt {
+  border-color: #1e6fbf !important;
+}
+
+.wip-admin-shell .focus\:border-run-volt:focus:not(.focus\:border-run-border) {
+  border-color: #1e6fbf !important;
+}
+
+.wip-admin-shell div.bg-run-volt {
+  background-color: #1e6fbf !important;
+}
+
+.wip-admin-shell button.admin-toggle-track.bg-run-volt {
+  background-color: #1e6fbf !important;
+  border-radius: 9999px !important;
+}
+
+.wip-admin-shell span.bg-run-volt {
+  background-color: #1e6fbf !important;
+  color: #fff !important;
+}
+
+.wip-admin-shell [class*="bg-run-volt/"] {
+  background-color: rgba(30, 111, 191, 0.12) !important;
+}
+
+.wip-admin-shell button.bg-run-volt.font-semibold {
+  background-color: #1e6fbf !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+}
+
+.wip-admin-shell button.bg-run-volt.font-semibold:hover {
+  background-color: #185fa8 !important;
+  filter: none !important;
+}
+
+.wip-admin-shell .accent-run-volt {
+  accent-color: #1e6fbf !important;
+}
+
+/* 버튼·링크형 CTA border-radius 6px (토글 트랙 제외) */
+.wip-admin-shell button.rounded-full:not(.admin-toggle-track):not([class*="admin-toggle"]),
+.wip-admin-shell a.rounded-full.inline-flex,
+.wip-admin-shell .admin-modal-cancel,
+.wip-admin-shell .admin-modal-danger,
+.wip-admin-shell .admin-drawer-btn-reject,
+.wip-admin-shell .admin-drawer-btn-approve {
+  border-radius: 6px !important;
+}
+
+/* 승인·재계산 등 primary CTA — 다크/라이트 공통 관리자 블루 */
+.wip-admin-shell .admin-drawer-btn-approve {
+  background-color: #1e6fbf !important;
+  color: #fff !important;
+}
+
+.wip-admin-shell .admin-drawer-btn-approve:hover:not(:disabled) {
+  background-color: #185fa8 !important;
+  opacity: 1 !important;
+}
+
+.wip-admin-shell .admin-drawer-btn-approve:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.wip-admin-shell .admin-pagination-nav,
+.wip-admin-shell .admin-pagination-page-idle,
+.wip-admin-shell .admin-pagination-page-active {
+  border-radius: 6px !important;
+}
+
+/* ── 관리자 체크박스 ── */
+.wip-admin-shell input[type="checkbox"].admin-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  border: 1px solid rgba(200, 216, 232, 0.35);
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.wip-admin-shell input[type="checkbox"].admin-checkbox:hover {
+  border-color: rgba(200, 216, 232, 0.55);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.wip-admin-shell input[type="checkbox"].admin-checkbox:checked {
+  border-color: #1e6fbf;
+  background-color: #1e6fbf;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8.5L6.5 11.5L12.5 4.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.wip-admin-shell input[type="checkbox"].admin-checkbox:focus-visible {
+  outline: 2px solid rgba(30, 111, 191, 0.45);
+  outline-offset: 2px;
+}
+
+html[data-theme="light"] .wip-admin-shell input[type="checkbox"].admin-checkbox {
+  border-color: #b8bdb0;
+  background-color: #fff;
+}
+
+html[data-theme="light"] .wip-admin-shell input[type="checkbox"].admin-checkbox:hover {
+  border-color: #8a9186;
+}
+
+html[data-theme="light"] .wip-admin-shell input[type="checkbox"].admin-checkbox:checked {
+  border-color: #1e6fbf;
+  background-color: #1e6fbf;
+}
+
+/* 입력·셀렉트 border-radius 6px */
+.wip-admin-shell input:not([type="checkbox"]):not([type="radio"]),
+.wip-admin-shell textarea,
+.wip-admin-shell .admin-filter-search,
+.wip-admin-shell .admin-filter-reset,
+.wip-admin-shell button.rounded-xl,
+.wip-admin-shell .wip-select-panel {
+  border-radius: 6px !important;
+}
+
+/* 뱃지 border-radius 4px */
+.wip-admin-shell .admin-badge,
+.wip-admin-shell span.rounded-full[class*="px-2"] {
+  border-radius: 4px !important;
+}
+
+/* ── 사이드바 ── */
+.wip-admin-shell .admin-sidebar {
+  background: #1e2d3d;
+  border-color: rgba(200, 216, 232, 0.12) !important;
+}
+
+.wip-admin-shell .admin-sidebar-brand {
+  color: #c8d8e8;
+}
+
+.wip-admin-shell .admin-sidebar-link {
+  display: block;
+  border-radius: 6px;
+  color: #c8d8e8;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.wip-admin-shell .admin-sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #c8d8e8;
+}
+
+.wip-admin-shell .admin-sidebar-link--active {
+  background: #2d4a6b;
+  color: #c8d8e8;
+}
+
+.wip-admin-shell .admin-sidebar-footer {
+  border-color: rgba(200, 216, 232, 0.12) !important;
+}
+
+/* ── 관리자 메인: 타이틀·탭 고정, 본문만 스크롤 ── */
+.wip-admin-shell .admin-page-header,
+.wip-admin-shell .admin-page-tabs {
+  position: relative;
+  z-index: 10;
+}
+
+/* ── 상태 뱃지 텍스트: 파스텔 → 채도 높은 어두운 색 ── */
+html[data-theme="light"] .wip-admin-shell .text-yellow-400 { color: #92400e !important; } /* amber-800 */
+html[data-theme="light"] .wip-admin-shell .text-green-400  { color: #166534 !important; } /* green-800 */
+html[data-theme="light"] .wip-admin-shell .text-red-400    { color: #b91c1c !important; } /* red-700   */
+html[data-theme="light"] .wip-admin-shell .text-blue-400   { color: #1d4ed8 !important; } /* blue-700  */
+html[data-theme="light"] .wip-admin-shell .text-purple-400 { color: #7e22ce !important; } /* purple-800 */
+
+/* ── 상태 뱃지 배경: 반투명 파스텔 → 어두운 색 기반 tint ── */
+html[data-theme="light"] .wip-admin-shell [class*="bg-yellow-500/"] {
+  background-color: rgba(146, 64,  14, 0.10) !important;
+}
+html[data-theme="light"] .wip-admin-shell [class*="bg-green-500/"] {
+  background-color: rgba( 22, 101, 52, 0.10) !important;
+}
+html[data-theme="light"] .wip-admin-shell [class*="bg-red-500/"] {
+  background-color: rgba(185,  28, 28, 0.09) !important;
+}
+html[data-theme="light"] .wip-admin-shell [class*="bg-blue-500/"] {
+  background-color: rgba( 29,  78, 216, 0.09) !important;
+}
+html[data-theme="light"] .wip-admin-shell [class*="bg-purple-500/"] {
+  background-color: rgba(126,  34, 206, 0.09) !important;
+}
+
+/* ── hover:bg-red-500/10 (삭제·반려 ghost 버튼) ── */
+html[data-theme="light"] .wip-admin-shell [class*="hover:bg-red-500/"]:hover {
+  background-color: rgba(185, 28, 28, 0.08) !important;
+}
+
+/* 커스텀 드롭다운 패널 그림자 */
+.wip-select-panel {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+html[data-theme="light"] .wip-select-panel {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10), 0 1px 4px rgba(0, 0, 0, 0.06);
+  background-color: #ffffff !important;
+}
+
+/* ── 관리자 폼: 포커스 테두리 회색 ── */
+.wip-admin-shell .wip-admin-field:focus,
+.wip-admin-shell input.wip-admin-field:focus {
+  border-color: var(--wip-border) !important;
+  outline: none;
+}
+
+html[data-theme="light"] .wip-admin-shell .wip-admin-field:focus,
+html[data-theme="light"] .wip-admin-shell input.wip-admin-field:focus {
+  border-color: #b8bdb0 !important;
+}
+
+.wip-admin-shell .admin-sidebar-logout {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.wip-admin-shell .admin-sidebar-logout:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.wip-admin-shell .admin-sidebar-logout:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 라이트 모드 전역 .text-white 오버라이드보다 우선 */
+html[data-theme="light"] .wip-admin-shell .admin-sidebar .admin-sidebar-logout {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-sidebar .admin-sidebar-logout:hover:not(:disabled) {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ── 관리자 접수 상태 뱃지 ── */
+.admin-badge {
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.admin-badge-before {
+  background: rgba(59, 130, 246, 0.18);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+.admin-badge-open {
+  background: rgba(34, 197, 94, 0.18);
+  color: #4ade80;
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.admin-badge-closed {
+  background: rgba(234, 179, 8, 0.18);
+  color: #facc15;
+  border-color: rgba(234, 179, 8, 0.35);
+}
+
+.admin-badge-ended {
+  background: rgba(255, 255, 255, 0.08);
+  color: #9ca3af;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.admin-badge-rejected {
+  background: rgba(239, 68, 68, 0.18);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-badge-before {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #93c5fd;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-badge-open {
+  background: #ecfdf5;
+  color: #047857;
+  border-color: #6ee7b7;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-badge-closed {
+  background: #fffbeb;
+  color: #b45309;
+  border-color: #fcd34d;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-badge-ended {
+  background: #f3f4f6;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-badge-rejected {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+}
+
+/* ── 관리자 종목 태그 ── */
+.admin-category-tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+html[data-theme="light"] .wip-admin-shell input[type="date"].wip-admin-date {
+  color-scheme: light;
+}
+
+/* ── 관리자 테이블 ── */
+.admin-table-wrap {
+  border-radius: 1rem;
+  border: 1px solid var(--wip-border);
+  background: rgba(20, 20, 20, 0.8);
+}
+
+.admin-table-head {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.wip-admin-shell .admin-table-col-record,
+.wip-admin-shell .admin-table td.font-mono {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+}
+
+.admin-table-head th:first-child,
+.admin-table-row td:first-child {
+  padding-left: 1.25rem;
+}
+
+.admin-table-head th:last-child,
+.admin-table-row td:last-child {
+  padding-right: 1.25rem;
+}
+
+.admin-table-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.admin-table-row:last-child {
+  border-bottom: none;
+}
+
+.admin-table-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.admin-table-row-clickable:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.admin-table-row-selected {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* 랭킹 순위 조정 — 미납·변경 행 (다른 admin-table-row 와 동일 톤) */
+.admin-table-row--unpaid {
+  background: rgba(248, 113, 113, 0.06);
+}
+
+.admin-table-row--rank-changed {
+  background: rgba(200, 255, 0, 0.08);
+}
+
+.admin-table-row--suspended {
+  background: rgba(248, 113, 113, 0.06);
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-row--suspended {
+  background: #fef2f2;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-row--suspended:hover {
+  filter: brightness(0.98);
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-row--unpaid {
+  background: #fef2f2;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-row--rank-changed {
+  background: #eef6ff;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-row--unpaid:hover,
+html[data-theme="light"] .wip-admin-shell .admin-table-row--rank-changed:hover {
+  filter: brightness(0.98);
+}
+
+/* 접수 상태 · 수정 · 삭제 컬럼 너비 */
+.admin-table-col-status {
+  width: 10%;
+}
+
+.admin-table-col-edit,
+.admin-table-col-delete {
+  width: 6%;
+}
+
+.admin-action-delete {
+  color: rgba(248, 113, 113, 0.75);
+}
+
+.admin-action-delete:hover {
+  color: #f87171;
+}
+
+.admin-rank-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--wip-border);
+  border-radius: 6px;
+  background: transparent;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.85);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.admin-rank-btn:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.admin-rank-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+/* 관리자 홈 — 요약 카드 */
+.admin-dashboard-stat-link {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.admin-dashboard-stat-card--clickable {
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.admin-dashboard-stat-link:hover .admin-dashboard-stat-card--clickable,
+.admin-dashboard-stat-link:focus-visible .admin-dashboard-stat-card--clickable {
+  border-color: rgba(0, 0, 0, 0.14);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.admin-dashboard-stat-link:active .admin-dashboard-stat-card--clickable {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.admin-dashboard-stat-link:focus-visible {
+  outline: none;
+}
+
+.admin-dashboard-stat-link:focus-visible .admin-dashboard-stat-card--clickable {
+  outline: 2px solid #1e6fbf;
+  outline-offset: 2px;
+}
+
+.admin-dashboard-stat--alert {
+  color: #f87171;
+}
+
+.admin-dashboard-stat--ok {
+  color: #4ade80;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-dashboard-stat--alert {
+  color: #b91c1c !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-dashboard-stat--ok {
+  color: #166534 !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-dashboard-stat-link:hover .admin-dashboard-stat-card--clickable,
+html[data-theme="light"] .wip-admin-shell .admin-dashboard-stat-link:focus-visible .admin-dashboard-stat-card--clickable {
+  border-color: #b8bcc4 !important;
+  background-color: #fafbfc !important;
+  box-shadow: 0 2px 8px rgba(18, 20, 16, 0.06);
+}
+
+/* 관리자 홈 — 빠른 이동 카드 */
+.admin-quick-link {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.admin-quick-link-card {
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.admin-quick-link:hover .admin-quick-link-card,
+.admin-quick-link:focus-visible .admin-quick-link-card {
+  border-color: #b8bcc4;
+  background-color: #fafbfc;
+  box-shadow: 0 2px 10px rgba(18, 20, 16, 0.06);
+}
+
+.admin-quick-link-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 10px;
+}
+
+.admin-quick-link-icon--orange {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.admin-quick-link-icon--green {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.admin-quick-link-icon--blue {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.admin-quick-link-icon--indigo {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.admin-quick-link-icon--purple {
+  background: #faf5ff;
+  color: #9333ea;
+}
+
+.admin-quick-link-icon--teal {
+  background: #f0fdfa;
+  color: #0d9488;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-quick-link-card {
+  background-color: #fff !important;
+  border-color: #e5e7eb !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-quick-link .text-white {
+  color: #121410 !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-quick-link .text-run-muted {
+  color: #6c7366 !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-dashboard-more {
+  border-color: #d6d9d1;
+  color: #121410;
+  background: #fff;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-dashboard-more:hover {
+  border-color: #9ca3af;
+  background: #f5f6f4;
+}
+
+/* 회원 관리 — 인라인 사이드 패널 */
+.admin-user-panel {
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.06);
+}
+
+.admin-user-panel-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--wip-muted);
+}
+
+.admin-user-panel-row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.admin-user-panel-row__label {
+  color: var(--wip-muted);
+}
+
+.admin-user-panel-row__value {
+  color: #fff;
+  font-weight: 500;
+}
+
+.admin-badge-revoke-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--wip-border);
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1;
+  color: rgba(248, 113, 113, 0.85);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.admin-badge-revoke-btn:hover {
+  border-color: rgba(248, 113, 113, 0.45);
+  background: rgba(248, 113, 113, 0.08);
+  color: #f87171;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-user-panel {
+  background-color: #ffffff !important;
+  border-left-color: #d6d9d1 !important;
+  box-shadow: -4px 0 16px rgba(18, 20, 16, 0.06);
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-user-panel .text-white,
+html[data-theme="light"] .wip-admin-shell .admin-user-panel-row__value {
+  color: #121410 !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-user-panel [class*="bg-black/"] {
+  background: #f5f6f4 !important;
+  border-color: #d6d9d1 !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-badge-revoke-btn {
+  border-color: #d6d9d1;
+  color: #b91c1c;
+  background: #fff;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-badge-revoke-btn:hover {
+  border-color: #fca5a5;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-rank-btn {
+  border-color: #d6d9d1;
+  color: #374151;
+  background: #fff;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-rank-btn:hover:not(:disabled) {
+  background: #f3f4f1;
+  border-color: #b8bdb0;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-wrap {
+  background: #ffffff;
+  border-color: #d6d9d1;
+  box-shadow: 0 1px 3px rgba(18, 20, 16, 0.06);
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-head {
+  background: #f8f9fa;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-head th {
+  color: #6c7366 !important;
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-row {
+  border-bottom: 1px solid #eef0eb;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-row:hover {
+  background: #f9faf7;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-row-clickable:hover {
+  background: #f3f4f0;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-row-selected {
+  background: #f3f4f0;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-table-row td.text-white,
+html[data-theme="light"] .wip-admin-shell .admin-table-row .font-medium.text-white {
+  color: #121410 !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-category-tag {
+  background: #ffffff;
+  color: #374151;
+  border: 1px solid #d6d9d1;
+}
+
+/* 인플루언서 승인 — 본문 행 배경만 (페이지 #f3f4f1보다 살짝 밝게) */
+html[data-theme="light"] .wip-admin-shell .influencer-approvals table tbody tr {
+  background-color: var(--wip-bg);
+}
+
+html[data-theme="light"] .wip-admin-shell .influencer-approvals table tbody tr:hover {
+  background-color: var(--wip-bg);
+}
+
+html[data-theme="light"] .wip-admin-shell .influencer-approvals table tbody tr td.text-white,
+html[data-theme="light"] .wip-admin-shell .influencer-approvals table tbody tr .font-medium.text-white {
+  color: #121410 !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-action-link:hover {
+  color: #121410 !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-action-delete {
+  color: #b91c1c;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-action-delete:hover {
+  color: #991b1b;
+}
+
+/* ── 관리자 확인 모달 ── */
+.admin-modal-overlay {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+/* 기록증 크게 보기 — 뷰포트 전체 어두운 배경 */
+.admin-image-lightbox-overlay {
+  background: rgba(0, 0, 0, 0.88);
+}
+
+.admin-icon-close {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0;
+  border: 1px solid var(--wip-border);
+  border-radius: 50%;
+  background: var(--wip-surface, rgba(255, 255, 255, 0.06));
+  color: var(--wip-muted);
+  font-size: 1.125rem;
+  line-height: 1;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.admin-icon-close:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-icon-close {
+  border-color: #d6d9d1;
+  background: #fff;
+  color: #6c7366;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-icon-close:hover {
+  border-color: #b8bdb0;
+  background: #f3f4f1;
+  color: #121410;
+}
+
+.admin-icon-close--no-hover,
+.admin-icon-close--no-hover:hover {
+  border-color: var(--wip-border);
+  background: var(--wip-surface, rgba(255, 255, 255, 0.06));
+  color: var(--wip-muted);
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-icon-close--no-hover,
+html[data-theme="light"] .wip-admin-shell .admin-icon-close--no-hover:hover {
+  border-color: #d6d9d1;
+  background: #fff;
+  color: #6c7366;
+}
+
+.admin-modal {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+
+.admin-modal-danger {
+  background: #dc2626;
+  color: #fff;
+}
+
+.admin-modal-danger:hover {
+  background: #b91c1c;
+}
+
+.admin-modal-cancel {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--wip-border);
+  background: transparent;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.admin-modal-cancel:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-modal-overlay {
+  background: transparent;
+  backdrop-filter: none;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-modal {
+  background-color: #ffffff !important;
+  box-shadow: 0 8px 32px rgba(18, 20, 16, 0.12);
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-modal .font-medium.text-white {
+  color: #121410 !important;
+}
+
+/* ── 관리자 상세 드로어 (오른쪽 슬라이드 패널) ── */
+.admin-drawer-overlay {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  cursor: default;
+}
+
+.admin-drawer {
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.18);
+}
+
+/* 드로어 헤더/푸터 버튼 — admin-modal·테이블 액션과 동일 톤 */
+.admin-drawer .admin-modal-cancel {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.admin-drawer-btn-reject {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1px solid var(--wip-border);
+  background: transparent;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: rgba(248, 113, 113, 0.85);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.admin-drawer-btn-reject:hover {
+  border-color: rgba(248, 113, 113, 0.45);
+  background: rgba(248, 113, 113, 0.08);
+  color: #f87171;
+}
+
+.admin-drawer-btn-approve {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background-color: #1e6fbf;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #fff;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.admin-drawer-btn-approve:hover:not(:disabled) {
+  background-color: #185fa8;
+  opacity: 1;
+}
+
+.admin-drawer-btn-approve:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-drawer {
+  background-color: #ffffff !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-drawer-overlay {
+  background: rgba(18, 20, 16, 0.35);
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-drawer .admin-drawer-row dt {
+  color: #6c7366;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-drawer .admin-drawer-row dd,
+html[data-theme="light"] .wip-admin-shell .admin-drawer #admin-drawer-title {
+  color: #121410 !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-drawer-btn-reject {
+  border-color: #d6d9d1;
+  color: #b91c1c;
+  background: #fff;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-drawer-btn-reject:hover {
+  border-color: #fca5a5;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-drawer-btn-approve {
+  background-color: #1e6fbf !important;
+  color: #fff !important;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-drawer-btn-approve:hover {
+  background-color: #185da3 !important;
+  opacity: 1;
+}
+
+/* 재계산 버튼 — 상태 문구를 라벨 옆에 표시 */
+.admin-recalc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.admin-recalc-btn__sep {
+  opacity: 0.65;
+  font-weight: 400;
+}
+
+.admin-recalc-btn__status {
+  font-weight: 600;
+}
+
+.admin-recalc-btn__status--pending {
+  opacity: 0.9;
+}
+
+.admin-recalc-btn__status--done {
+  opacity: 1;
+}
+
+.admin-recalc-btn__status--fail {
+  color: #fecaca;
+}
+
+/* ── 관리자 페이지네이션 ── */
+
+.admin-pagination-info {
+  color: var(--wip-muted);
+  min-width: 80px;
+}
+
+.admin-pagination-nav {
+  color: var(--wip-muted);
+}
+
+.admin-pagination-nav:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.admin-pagination-ellipsis {
+  color: var(--wip-muted);
+}
+
+.admin-pagination-page-idle {
+  color: var(--wip-muted);
+  transition: none;
+}
+
+.admin-pagination-page-idle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.admin-pagination-page-active {
+  background: #fff;
+  color: #111;
+  font-weight: 600;
+  transition: none;
+}
+
+/* 라이트 모드 */
+html[data-theme="light"] .wip-admin-shell .admin-pagination-info {
+  color: #6b7280;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-pagination-nav {
+  color: #374151;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-pagination-nav:not(:disabled):hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-pagination-ellipsis {
+  color: #9ca3af;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-pagination-page-idle {
+  color: #374151;
+  transition: none;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-pagination-page-idle:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-pagination-page-active {
+  background: #1e6fbf;
+  color: #fff;
+  transition: none;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-modal-cancel {
+  border-color: #d6d9d1;
+  color: #374151;
+  background: #fff;
+}
+
+html[data-theme="light"] .wip-admin-shell .admin-modal-cancel:hover {
+  background: #f3f4f1;
+  border-color: #b8bdb0;
 }

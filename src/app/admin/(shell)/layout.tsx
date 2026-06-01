@@ -1,15 +1,5 @@
-import Link from "next/link";
-import { LogoutButton } from "@/shared/components/LogoutButton";
-
-const nav = [
-  { href: "/admin", label: "홈" },
-  { href: "/admin/competitions", label: "대회" },
-  { href: "/admin/leaderboard", label: "Top100" },
-  { href: "/admin/records", label: "기록" },
-  { href: "/admin/ranking-jobs", label: "랭킹" },
-  { href: "/admin/influencer", label: "인플루언서" },
-  { href: "/admin/users", label: "회원" },
-] as const;
+import { AdminSidebarLogout } from "./AdminSidebarLogout";
+import { AdminSidebarNav } from "./AdminSidebarNav";
 
 export default function AdminShellLayout({
   children,
@@ -17,25 +7,21 @@ export default function AdminShellLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-dvh lg:flex">
-      <aside className="border-b border-run-border lg:w-56 lg:border-b-0 lg:border-r lg:border-run-border">
-        <div className="flex items-center justify-between gap-2 px-4 py-4 lg:flex-col lg:items-stretch">
-          <p className="font-display text-lg font-bold text-white">Admin</p>
-          <LogoutButton redirectTo="/admin/login" label="로그아웃" />
+    <div className="admin-shell flex min-h-dvh flex-col overflow-hidden lg:h-dvh lg:flex-row">
+      <aside className="admin-sidebar flex shrink-0 flex-col border-b border-white/10 lg:h-dvh lg:w-56 lg:overflow-y-auto lg:border-b-0 lg:border-r">
+        <div className="px-4 py-4">
+          <p className="admin-sidebar-brand font-display text-lg font-semibold">Admin</p>
         </div>
-        <nav className="flex flex-wrap gap-2 px-4 pb-4 lg:flex-col lg:gap-1">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider text-run-muted hover:bg-white/5 hover:text-white"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+
+        <AdminSidebarNav />
+
+        <div className="admin-sidebar-footer mt-auto border-t border-run-border px-4 py-3">
+          <AdminSidebarLogout />
+        </div>
       </aside>
-      <div className="flex-1 px-4 py-8 lg:px-10">{children}</div>
+      <div className="admin-main flex min-h-0 flex-1 flex-col overflow-hidden px-4 py-8 lg:px-10">
+        {children}
+      </div>
     </div>
   );
 }
