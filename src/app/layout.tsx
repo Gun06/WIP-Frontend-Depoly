@@ -31,7 +31,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var p=location.pathname;if(p==='/admin'||p.indexOf('/admin/')===0){document.documentElement.dataset.theme='light';return;}var m=localStorage.getItem('wip-theme');if(m==='dark'){document.documentElement.dataset.theme='dark';}else{document.documentElement.dataset.theme='light';}}catch(e){document.documentElement.dataset.theme='light';}})();",
+              "(function(){try{var m=localStorage.getItem('wip-theme');if(m==='dark'){document.documentElement.dataset.theme='dark';}else{document.documentElement.dataset.theme='light';}}catch(e){document.documentElement.dataset.theme='light';}})();",
           }}
         />
         {children}

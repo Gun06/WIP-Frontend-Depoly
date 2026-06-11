@@ -31,14 +31,8 @@ export function AdminLoginScreen() {
       <p className="mt-2 text-sm text-run-muted">데모: 제출 시 관리자 세션 쿠키가 설정됩니다.</p>
       <Card className="mt-8 space-y-4">
         <form className="space-y-4" onSubmit={onSubmit}>
-          <Input label="관리자 아이디" name="id" autoComplete="username" tone="neutral" />
-          <Input
-            label="비밀번호"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            tone="neutral"
-          />
+          <Input label="관리자 아이디" name="id" autoComplete="username" />
+          <Input label="비밀번호" name="password" type="password" autoComplete="current-password" />
           <Button type="submit" className="w-full" disabled={pending}>
             {pending ? "처리 중…" : "관리자로 로그인"}
           </Button>

@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  wip-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wip-frontend-test
+    ports:
+      - "3000:3000"
+    restart: always
+    environment:
+      - NODE_ENV=production
+    networks:
+      - wip-network
+
+networks:
+  wip-network:
+    external: true  # 이미 수동으로 생성한 외부 네트워크를 사용하겠다는 선언
